@@ -13,7 +13,7 @@ const Index = () => {
                         Docs
                     </a>
                     <a href="#" className="opacity-60">
-                        Components
+                        Components Welcome github pipeline 
                     </a>
                     <a href="#">Breadcrumbs</a>
                 </Breadcrumbs>
