@@ -10,10 +10,10 @@ const Index = () => {
             <div className="flex flex-col gap-2">
                 <Breadcrumbs>
                     <a href="#" className="opacity-60">
-                        Docs
+                        Docs 
                     </a>
                     <a href="#" className="opacity-60">
-                        Components Welcome github pipeline 
+                        Components Welcome new project 
                     </a>
                     <a href="#">Breadcrumbs</a>
                 </Breadcrumbs>
