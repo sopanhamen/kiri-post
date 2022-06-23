@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import AuthLayout from '@layout/auth/Authlayout'
+import AuthLayout from '@layout/auth/AuthLayout'
 import { Input } from '@material-tailwind/react'
 import { Button } from '@material-tailwind/react'
 import { Card, CardBody, CardHeader } from '@material-tailwind/react'

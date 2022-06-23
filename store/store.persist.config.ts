@@ -4,8 +4,6 @@ import storage from 'redux-persist/lib/storage'
 // redux persist config
 export const persistConfig = {
     key: 'root',
+    whitelist: [''],
     storage,
-    // put the state u want it to persisted
-    // 'admin'
-    whitelist: ['auth'],
 }

@@ -1,20 +1,13 @@
-import { Alert } from '@material-tailwind/react'
+import ClientLayout from '@layout/client/ClientLayout'
 import { Breadcrumbs } from '@material-tailwind/react'
-import { NextPage } from 'next/types'
-const Home: NextPage = () => {
+
+const Index = () => {
     const objClass = {
         wrapper: ``,
     }
     return (
         <div className={objClass.wrapper}>
             <div className="flex flex-col gap-2">
-                <Alert variant="filled">
-                    A simple filled alert for showing message.
-                </Alert>
-                <Alert variant="gradient">
-                    A simple gradient alert for showing message.
-                </Alert>
-
                 <Breadcrumbs>
                     <a href="#" className="opacity-60">
                         Docs
@@ -29,4 +22,6 @@ const Home: NextPage = () => {
     )
 }
 
-export default Home
+Index.layout = ClientLayout
+
+export default Index
