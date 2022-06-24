@@ -35,3 +35,19 @@ jobs:
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
 
   # config credential server
+  # deploy: 
+  #   .deploy: &deploy
+  # stage: deploy
+  # image: google/cloud-sdk
+  # services:
+  #   - docker:dind
+  # script:
+  #   - chmod +x ./dotenv.sh
+  #   - chmod +x ./languages.sh
+  #   - ./dotenv.sh
+  #   - ./languages.sh
+  #   - echo $GCP_SERVICE_KEY > gcloud-service-key.json # Google Cloud service accounts
+  #   - gcloud auth activate-service-account --key-file gcloud-service-key.json
+  #   - gcloud config set project $GCP_PROJECT_ID
+  #   - sed -i "s,SERVICE_NAME,"$SERVICE_NAME",g" cloudbuild.yml
+  #   - gcloud builds submit . --config=cloudbuild.yml --timeout=2700s

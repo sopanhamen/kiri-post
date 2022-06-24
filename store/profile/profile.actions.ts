@@ -37,7 +37,7 @@ export function getUserProfileById(id: string): FunctionReturn {
         dispatch(getUserProfileRequest())
 
         try {
-            const data = await profileService.getProfileById(id)
+            const data: any = await profileService.getProfileById(id)
 
             const payload: UserProfile = {
                 ...data,
