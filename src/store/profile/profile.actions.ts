@@ -1,5 +1,5 @@
-import { IActionReturnType } from '@shared/interfaces/common'
-import { UserProfile } from '@shared/models/user.model'
+import { IActionReturnType } from 'src/shared/interfaces/common'
+import { UserProfile } from 'src/shared/models/user.model'
 import { Dispatch } from 'redux'
 
 import * as profileService from '../services/profile.service'
@@ -37,7 +37,7 @@ export function getUserProfileById(id: string): FunctionReturn {
         dispatch(getUserProfileRequest())
 
         try {
-            const data = await profileService.getProfileById(id)
+            const data: any = await profileService.getProfileById(id)
 
             const payload: UserProfile = {
                 ...data,

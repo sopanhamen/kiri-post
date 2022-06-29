@@ -1,37 +1,24 @@
 name: Node CI
 
-#event 
-on: 
-  push:
-    branches: [ dev ]
-  pull_request:
-    branches: [ dev ]
-jobs: 
-  build: 
-    runs-on: ubuntu-latest
+#event
+on:
+    push:
+        branches: [dev]
+    pull_request:
+        branches: [dev]
+jobs:
+    build:
+        runs-on: ubuntu-latest
 
-    strategy: 
-      matrix: 
-        node-version: [12.x , 14.x, 16.x]
-    #steps:
-    # simple config
-    #- uses: actions/checkout@v1
-    #- name: Use Node.js ${{matrix.node-version}}
-    #  uses: actions/setup-node@v1
-    #  with: 
-    #    node_version: ${{matrix.node-version}}
-    #- name: yarn , build and test
-    #  run: 
-    #    yarn 
-    #    yarn build --if-present
-    #  env: 
-    #   CI: true
+        strategy:
+            matrix:
+                node-version: [16.x]
 
-  
-    # config workflow with dockerImage
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-
-  # config credential server
+        steps:
+            - uses: actions/checkout@v3
+            - name: Build the Docker image
+              run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    # write deploy flow here
+    #deploy:
+    #    runs-on: ubuntu-latest
+    #    needs: build

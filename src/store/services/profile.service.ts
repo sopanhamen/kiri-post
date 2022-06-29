@@ -1,6 +1,6 @@
 // SOURCE: https://jsonplaceholder.typicode.com/
 
-import { UserProfile } from '@shared/models/user.model'
+import { UserProfile } from 'src/shared/models/user.model'
 
 const URL = 'https://jsonplaceholder.typicode.com/users'
 

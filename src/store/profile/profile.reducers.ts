@@ -5,8 +5,8 @@ import {
     EntityAdapter,
     EntityState,
 } from '@reduxjs/toolkit'
-import { CommonState, IArrayProps, IProps } from '@shared/interfaces/common'
-import { UserProfile } from '@shared/models/user.model'
+import { CommonState, IArrayProps, IProps } from 'src/shared/interfaces/common'
+import { UserProfile } from 'src/shared/models/user.model'
 
 import {
     createUserProfileSuccess,
