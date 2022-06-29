@@ -1,7 +1,6 @@
 import { Fragment } from 'react'
 import { Provider } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
-
 import { Page } from '@shared/interfaces/Page'
 import type { AppProps } from 'next/app'
 import { Router } from 'next/router'
@@ -9,7 +8,7 @@ import NProgress from 'nprogress'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persister, store } from 'src/store'
 
-import '../styles/globals.scs'
+import '../styles/globals.scss'
 import 'react-toastify/dist/ReactToastify.css'
 
 type IProps = AppProps & {

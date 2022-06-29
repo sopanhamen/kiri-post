@@ -1,10 +1,12 @@
 import ClientLayout from '@layout/client/ClientLayout'
 import { Breadcrumbs } from '@material-tailwind/react'
+import BasicButton from '@shared/components/Button/BasicButton'
 
 const Index = () => {
     const objClass = {
-        wrapper: ``,
+        wrapper: `m-5 `,
     }
+    console.log('testtasdasd')
     return (
         <div className={objClass.wrapper}>
             <div className="flex flex-col gap-2">
@@ -17,6 +19,11 @@ const Index = () => {
                     </a>
                     <a href="#">Breadcrumbs</a>
                 </Breadcrumbs>
+
+                <BasicButton
+                    label="Button"
+                    onClick={() => console.log('hello')}
+                />
             </div>
         </div>
     )
