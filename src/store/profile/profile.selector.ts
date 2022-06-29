@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { UserProfile } from '@shared/models/user.model'
+import { UserProfile } from 'src/shared/models/user.model'
 
 import { StoreState } from '../root-reducer'
 

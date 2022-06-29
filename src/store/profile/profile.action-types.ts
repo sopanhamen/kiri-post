@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { UserProfile } from '@shared/models/user.model'
+import { UserProfile } from 'src/shared/models/user.model'
 
 export const setProfileInitialState = createAction(
     '[Set Profile Initial Value]',

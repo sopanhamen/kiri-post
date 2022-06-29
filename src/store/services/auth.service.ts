@@ -1,5 +1,5 @@
-import { AuthProfile } from '@shared/models/auth.model'
-import api, { defaultHeader } from '@shared/services/api.service'
+import { AuthProfile } from 'src/shared/models/auth.model'
+import api, { defaultHeader } from 'src/shared/services/api.service'
 import axios, { AxiosRequestHeaders, AxiosResponse } from 'axios'
 
 const baseURL = process.env.BASE_URL

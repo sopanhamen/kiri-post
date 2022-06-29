@@ -1,10 +1,6 @@
-
 import { Dispatch } from 'redux'
 
-import {
-    decreaseTodo,
-    increaseTodo
-} from './todo.action-type'
+import { decreaseTodo, increaseTodo } from './todo.action-type'
 const increaseAction = () => {
     return (dispatch: Dispatch) => {
         dispatch(increaseTodo())
@@ -19,7 +15,7 @@ const decreaseAction = () => {
 
 const TodoAction = {
     increaseAction,
-    decreaseAction
+    decreaseAction,
 }
 
 export default TodoAction
