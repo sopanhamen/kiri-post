@@ -26,7 +26,6 @@ export const FormService = {
                 return message || `${label} cannot be greater than 100`
             case 'validate':
                 return errors[key]?.message || message
-
             default:
                 return ''
         }

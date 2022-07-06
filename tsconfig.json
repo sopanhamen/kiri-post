@@ -20,7 +20,9 @@
             "@pages/*": ["src/pages/*"],
             "@layout/*": ["src/layouts/*"],
             "@shared/*": ["src/shared/*"],
-            "@store/*": ["src/store/*"]
+            "@store/*": ["src/store/*"],
+            "@component/*": ["src/components/*"],
+            "@sagaStore/*": ["src/sagaStore/*"]
         }
     },
     "include": [
