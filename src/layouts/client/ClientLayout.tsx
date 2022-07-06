@@ -5,6 +5,13 @@ interface IProps {
 }
 const ClientLayout = (props: IProps) => {
     const { children } = props
-    return <div>{children}</div>
+
+    const style = {
+        wrapper: `bg-slate-50`
+    }
+    return (
+        <div className={ style.wrapper}>
+            {children}
+        </div>)
 }
 export default ClientLayout

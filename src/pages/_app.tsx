@@ -5,8 +5,8 @@ import { Page } from '@shared/interfaces/Page'
 import type { AppProps } from 'next/app'
 import { Router } from 'next/router'
 import NProgress from 'nprogress'
-import { PersistGate } from 'redux-persist/integration/react'
-import { persister, store } from 'src/store'
+import { PersistGate } from 'redux-persist/integration/react';
+import { persister, store } from '@store/index'
 
 import '../styles/globals.scss'
 import 'react-toastify/dist/ReactToastify.css'

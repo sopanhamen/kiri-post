@@ -40,15 +40,15 @@ const BasicButton = (props: IButtonProps) => {
         color = 'blue-grey',
         variant = 'outlined',
         disable = false,
-        size = 'md',
+        size = 'sm',
     } = props
 
     const styles = {
-        wrapper: `rounded-full px-0.5`,
+        wrapper: `rounded-full `,
         container: ``,
     }
     return (
-        <div>
+        <>
             <Button
                 variant={variant}
                 color={color}
@@ -59,7 +59,7 @@ const BasicButton = (props: IButtonProps) => {
             >
                 {label}
             </Button>
-        </div>
+        </>
     )
 }
 

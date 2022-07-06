@@ -33,9 +33,9 @@ module.exports = {
             '@fullhuman/postcss-purgecss',
             {
                 content: [
-                    './pages/**/*.{js,jsx,ts,tsx}',
-                    './components/**/*.{js,jsx,ts,tsx}',
-                    './shared/**/*.{js,jsx,ts,tsx}',
+                    './src/pages/**/*.{js,jsx,ts,tsx}',
+                    './src/components/**/*.{js,jsx,ts,tsx}',
+                    './src/shared/**/*.{js,jsx,ts,tsx}',
                 ],
                 defaultExtractor: (content) =>
                     content.match(/[\w-/:]+(?<!:)/g) || [],
@@ -54,9 +54,6 @@ module.exports = {
         ],
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
         imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    },
-    future: {
-        webpack5: true
     },
     reactStrictMode: true,
     react: { useSuspense: false }
