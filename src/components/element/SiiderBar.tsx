@@ -1,16 +1,22 @@
 import { useState } from "react"
-import { MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowRight, MdOutlineExpandMore } from "react-icons/md";
+import { INavbar } from "@layout/admin/data";
 import clsx from "clsx"
 import * as _ from 'lodash'
 import Image from "next/image"
 import Link from "next/link"
 
-const Sidebar = (props) =>
+interface IProp {
+    isShow?: boolean, 
+    navigation?: INavbar[]
+}
+
+const Sidebar = (props: IProp) =>
 {
     const { isShow, navigation } = props
     const [sidebarState, setSidebarState] = useState(navigation)
     const style = {
-        root: clsx('section-sidebar w-1/4 ', isShow && isShow && 'customMenu'),
+        root: clsx('section-sidebar h-screen', isShow && isShow && 'customMenu'),
         sideHear: `sidebar-header center`,
         logoWrapper: `bg-admin-logo cursor-pointer`,
         logo: `w-full h-full`,
@@ -28,7 +34,7 @@ const Sidebar = (props) =>
         boxBottom: `custom-box-bottom`
     }
 
-    const openSubMenu = (index: string, isShow: boolean) =>
+    const openSubMenu = (index: number, isShow: boolean) =>
     {
         const mapNav = _.map(navigation, (el, i) =>
         {
@@ -98,7 +104,14 @@ const Sidebar = (props) =>
 
 
                                                     <div className="">
-                                                        <MdKeyboardArrowRight size={25} className="float-right" />
+                                                        {
+                                                            menu.showSubmenu ? (
+                                                                <MdOutlineExpandMore size={25} className="float-right" color="black"/>
+                                                            ) : (
+                                                                <MdKeyboardArrowRight size={25} className="float-right" color="black" />
+                                                            )
+                                                        }
+                                                        
                                                     </div>
 
                                                 </div>

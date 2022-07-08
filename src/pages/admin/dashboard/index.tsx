@@ -1,8 +1,12 @@
 import AdminLayout from "@layout/admin/AdminLayout"
 
 const Dashboard = () => {
+
+    const style = {
+        container: `container`
+    }
     return (
-        <div>
+        <div className={style.container}>
             <h1 className="text-black"> Hello world</h1>
             <h1 className="text-black"> Hello world</h1>
             <h1 className="text-black"> Hello world</h1>
@@ -13,5 +17,6 @@ const Dashboard = () => {
 
     )
 }
-Dashboard.layout = AdminLayout
+Dashboard.layout = AdminLayout;
+
 export default Dashboard

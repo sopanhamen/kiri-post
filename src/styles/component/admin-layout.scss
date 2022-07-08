@@ -1,5 +1,21 @@
-
+#layout-admin {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    width: 100%;
+    overflow-x: hidden;
+    margin-left: 246px;
+    transition: 1s;
+}
 #page-body-content{
-
-    
+    margin-top: 5rem;
+    overflow: hidden;
+    .kiri-container {
+        border-top-left-radius: 1.50rem;
+        border-top-right-radius: 1.50rem;
+        padding: 1.50rem;
+        height: 100%;
+        background: $care-light6-color;
+        margin: 0.5rem;
+        
+    }
 }

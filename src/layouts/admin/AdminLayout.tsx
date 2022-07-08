@@ -10,10 +10,10 @@ interface IProps
 }
 const style = {
     wrapper: `flex w-full flex-wrap `,
-    containerWrapper: `h-screen w-5/6 bg-white flex flex-col`,
-    container: `p-3 w-full`,
-    bodyContain: ` w-full `,
-    bodyContainer: `bg-indigo-200 m-2`
+    containerWrapper: `h-screen bg-white flex flex-col w-full`,
+    container: `p-3`,
+    bodyContain: `w-full h-screen`,
+    bodyContainer: ` kiri-container`
 }
 
 const AdminLayout = (props: IProps) =>
@@ -21,7 +21,6 @@ const AdminLayout = (props: IProps) =>
     const { children } = props
 
     const { admin } = navigation
-
 
     const handleClickMenu = () =>
     {
@@ -32,7 +31,7 @@ const AdminLayout = (props: IProps) =>
 
             <Sidebar navigation={admin} />
 
-            <div className={style.containerWrapper}>
+            <div className={style.containerWrapper} id="layout-admin">
 
                 <AdminNavbar handleClickMenu={handleClickMenu} />
 
