@@ -1,1 +1,1 @@
-export * from './jsonTodo';
+export * from './jsonTodo'

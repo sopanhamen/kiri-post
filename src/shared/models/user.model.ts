@@ -1,7 +1,6 @@
 import { BaseModel } from './base.models'
 
-export class UserProfile extends BaseModel
-{
+export class UserProfile extends BaseModel {
     city: string
     email: string
     phone: string
@@ -9,8 +8,7 @@ export class UserProfile extends BaseModel
     // added for update and upsert purposes
     clan: string
 
-    constructor(data: any)
-    {
+    constructor(data: any) {
         super(data)
         this.city = data.address?.city
         this.email = data.email
@@ -20,8 +18,7 @@ export class UserProfile extends BaseModel
     }
 }
 
-export interface User
-{
-    id: number | string;
-    name: string;
+export interface User {
+    id: number | string
+    name: string
 }

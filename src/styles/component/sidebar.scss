@@ -1,0 +1,155 @@
+
+#section-sidebar,
+.section-sidebar {
+    min-height: 100vh;
+    max-width: 250px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    transition: 1s;
+    z-index: 999;
+
+    &.customMenu {
+        left: 0;
+    }
+
+    .closeIcone {
+        position: absolute;
+        right: -35px;
+        z-index: 1;
+    }
+
+    .sidebar-header {
+        height: 70px;
+        background: $white;
+
+        .bg-admin-logo {
+            width: 244px;
+            height: 70px;
+            background-color: #C9EECF;
+            position: absolute;
+            padding: 10px 7px;
+            left: 0;
+            top: 0;
+        }
+    }
+
+    .bg-sidebar {
+        background-color: #494949;
+        width: 250px;
+        height: auto;
+        min-height: 100vh;
+        position: relative;
+        .bg-sm-green {
+            background-color: $white;
+            width: 6px;
+            right: 0;
+            height: 100%;
+            position: absolute;
+        }
+        .sidebar-items {
+            direction: ltr;
+            .sidebar-ul {
+                background-color: rgb(46, 46, 185);
+                padding-left: 10px;
+
+                .sidebar-li {
+                    position: relative;;
+                    .list-contain {
+                        background-color: inherit;
+                        padding: 20px 0px 17px 5px;
+
+                        .submenu-list {
+                            background-color: inherit;
+                            padding: 10px 0px 10px 0;
+                            margin: 0px 0px 1px 28px;
+
+                        }
+                        .submenu-list:hover {
+                            background-color: rgb(72, 121, 72);
+                            border-top-left-radius: 1.25rem;
+                            border-bottom-left-radius: 1.25rem;
+                        } 
+                    }
+                
+                    .list-contain:hover {
+                        background-color: $white;
+                        padding: 20px 0px 17px 5px;
+                        border-top-left-radius: 1.50rem;
+                        border-bottom-left-radius: 1.50rem;
+                        position: relative;
+                        .item-text-color {
+                            color: $black;
+                        }
+
+                        .custom-box-top {
+                            position: absolute;
+                            background-color: $white;
+                            top: -17px;
+                            right: 6px;
+                            width: 50px;
+                            
+                            height: 17px;
+                            .box-top-inner {
+                                position: absolute;
+                                background-color: rgb(46, 46, 185);
+                                border-bottom-right-radius: 2.5rem;
+                                top: 0;
+                                right: 0px;
+                                width: 50px;
+                                height: 17px;
+                            }
+                        }
+                        .custom-box-bottom {
+                            position: absolute; 
+                            background-color: $white;
+                            bottom: -17px;
+                            right: 6px;
+                            width: 50px;
+                            height: 17px;
+                            .box-bottom-inner {
+                                position: absolute;
+                                background-color: rgb(46, 46, 185);
+                                border-top-right-radius: 2.5rem;
+                                top: 0;
+                                right: 0px;
+                                width: 50px;
+                                height: 17px;
+                            }
+                        }
+                        
+                    }
+                }
+
+                .active {
+                    background-color: white;
+                    border-top-left-radius: 1.25rem;
+                    border-bottom-left-radius: 1.25rem;
+                }
+                
+            
+            }
+        }
+    }
+}
+
+
+@media (max-width: 767px) {
+    .section-sidebar {
+        left: -250px;
+
+        .bg-sidebar {
+            max-height: calc(100vh - 75px);
+            min-height: 100%;
+            height: 100vh;
+            width: 247px;
+            direction: rtl;
+            overflow-y: auto;
+
+            .sidebar-items {
+                padding: 0px 15px;
+                direction: ltr;
+            }
+        }
+    }
+}

@@ -1,46 +1,39 @@
-
-import get from 'lodash/get';
-import { FC } from 'react';
 import * as _ from 'lodash'
+    import get from 'lodash/get'
 
-interface ITableProps
-{
-    isLoading: boolean,
-    isNo?: boolean,
-    pageSize?: number,
-    initialPage?: number,
-    columns: Array<any>,
-    data: Array<any>,
-    onRowClick?: () => void
+
+interface ITableProps {
+    isLoading: boolean
+    isNo?: boolean
+    pageSize?: number
+    initialPage?: number
+    columns: Array<any>
+    data: Array<any>
+    onRowClick?: any
 }
 
-interface IArray<T>
-{
+interface IArray<T> {
     data?: T[]
 }
 
-interface ICellProps
-{
-    accessor?: any,
-    data?: IArray<any>,
-    onClick?: () => void,
+interface ICellProps {
+    accessor?: any
+    data?: IArray<any>
+    onClick?: () => void
     className?: string
-
 }
 
-const TableCell = (props: ICellProps) =>
-{
-    const { accessor, data, onClick, className } = props;
-    const label = typeof accessor === 'function' ? accessor(data) : get(data, accessor);
+const TableCell = (props: ICellProps) => {
+    const { accessor, data, onClick, className } = props
+    const label =
+        typeof accessor === 'function' ? accessor(data) : get(data, accessor)
     return (
         <td onClick={onClick} className={className}>
             {label || ''}
         </td>
-    );
-};
-export const BasicTable: FC<ITableProps> = (props) =>
-{
-
+    )
+}
+export const BasicTable = (props: ITableProps ): JSX.Element => {
     const {
         isLoading = false,
         isNo = true,
@@ -49,7 +42,6 @@ export const BasicTable: FC<ITableProps> = (props) =>
         onRowClick,
         columns,
         data,
-
     } = props
     const tableStyle = {
         tableWrapper: `w-full clear-both`,
@@ -58,64 +50,73 @@ export const BasicTable: FC<ITableProps> = (props) =>
         tableColHead: `position-relative text-zinc-900 bg-slate-200 font-medium bg-slate-50 `,
         tableBody: `table-row-group align-middle border-inherit`,
         tableRow: `table-row`,
-        tableCol: `position-relative text-zinc-900 font-medium bg-slate-50`
+        tableCol: `position-relative text-zinc-900 font-medium bg-slate-50`,
     }
- 
 
-    console.log("data", data)
+    console.log('data', data)
 
     return (
         <div className={tableStyle.tableWrapper}>
             <table className={tableStyle.tableContain}>
                 <thead className={tableStyle.tableHeader}>
                     <tr>
-                        {isNo ? <th className={tableStyle.tableColHead}>No</th> : null}
+                        {isNo ? (
+                            <th className={tableStyle.tableColHead}>No</th>
+                        ) : null}
 
-                        {
-                            _.map(columns, ({ label }, index) =>
-                            {
-                                return (
-                                    <th key={index} className={tableStyle.tableColHead}>{label}</th>
-                                )
-                            })
-                        }
+                        {_.map(columns, ({ label }, index) => {
+                            return (
+                                <th
+                                    key={index}
+                                    className={tableStyle.tableColHead}
+                                >
+                                    {label}
+                                </th>
+                            )
+                        })}
                     </tr>
                 </thead>
 
                 <tbody className={tableStyle.tableBody}>
-                    {
-                        _.size(data) > 0 && !isLoading ? (
-                            _.map(data, (d, index) => (
-                                <tr className={tableStyle.tableRow} key={index}>
-                                    {isNo && (
-                                        <td className="align-middle text-center">{index + 1 + pageSize * (initialPage - 1)}</td>
-                                    )}
+                    {_.size(data) > 0 && !isLoading ? (
+                        _.map(data, (d, index) => (
+                            <tr className={tableStyle.tableRow} key={index}>
+                                {isNo && (
+                                    <td className="align-middle text-center">
+                                        {index +
+                                            1 +
+                                            pageSize * (initialPage - 1)}
+                                    </td>
+                                )}
 
-                                    {_.map(columns, ({ accessor, cellClickable = true }, i) => (
+                                {_.map(
+                                    columns,
+                                    ({ accessor, cellClickable = true }, i) => (
                                         <TableCell
                                             key={i}
                                             className={tableStyle.tableCol}
-                                            onClick={cellClickable && onRowClick ? () => onRowClick(d) : undefined}
+                                            onClick={
+                                                cellClickable && onRowClick
+                                                    ? () => onRowClick(d)
+                                                    : undefined
+                                            }
                                             accessor={accessor}
                                             data={d}
                                         />
-                                    ))}
-                                </tr>
-                            ))
-                        ) : (
-                            <tr>
-
-                                {isLoading ? <p>Loading...</p> : <p>No record</p>}
-
+                                    ),
+                                )}
                             </tr>
-                        )
-                    }
+                        ))
+                    ) : (
+                        <tr>
+                            {isLoading ? <p>Loading...</p> : <p>No record</p>}
+                        </tr>
+                    )}
                 </tbody>
             </table>
         </div>
     )
 }
-
 
 // import Pagination from './Pagination';
 // import CustomDropdown from './CustomDropdown';
@@ -227,4 +228,3 @@ export const BasicTable: FC<ITableProps> = (props) =>
 // }
 
 // export default TableList;
-

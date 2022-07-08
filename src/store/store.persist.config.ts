@@ -1,5 +1,4 @@
-
-import storage from 'redux-persist/lib/storage'
+import storage from 'redux-persist'
 // defaults to localStorage for web
 
 // redux persist config

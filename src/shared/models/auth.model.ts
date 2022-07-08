@@ -4,6 +4,10 @@ export interface IUser {
     firstName?: string
     lastName?: string
 }
+export interface ILogin {
+    username: string,
+    password: string
+}
 
 export class AuthProfile extends BaseModel {
     email: string

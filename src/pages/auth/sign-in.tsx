@@ -1,43 +1,99 @@
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import AuthLayout from '@layout/auth/AuthLayout'
-import { Input } from '@material-tailwind/react'
 import { Button } from '@material-tailwind/react'
 import { Card, CardBody, CardHeader } from '@material-tailwind/react'
+import { authActions } from '@sagaStore/features/auth/authSlice'
+import { useAppDispatch } from '@sagaStore/hook'
+import BasicInput from '@shared/components/Input/BasicInput'
+import { ILogin } from '@shared/models'
+import { FormService } from '@shared/services/form.service'
 
 const styles = {
     wrapper: ``,
     cardWrapper: `mt-6 w-96`,
-    cardHeader: `relative h-5`,
+    cardHeader: `h-16 `,
+    textHeader: `text-center align-middle inline-block`,
     cardBody: `text-center`,
 }
-const SignIn = () => {
+const SignIn = () =>
+{
     const {
-        register,
+        control,
         handleSubmit,
         formState: { errors },
     } = useForm()
-    const onSubmit = () => {
-        console.log('test')
+
+    const dispatch = useAppDispatch();
+
+    // const isLoggin = useAppSelector((state) => state.auth.logging);
+
+    const onSubmit = (formData: ILogin) =>
+    {
+
+        dispatch(
+            authActions.login({
+                username: formData.username,
+                password: formData.password,
+            })
+        );
     }
+
+
     return (
         <div className={styles.wrapper}>
             <Card className={styles.cardWrapper}>
                 <CardHeader color="blue" className={styles.cardHeader}>
-                    <h4> Sign In</h4>
+                    <span className={styles.textHeader}> Sign In</span>
                 </CardHeader>
                 <CardBody className={styles.cardBody}>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <Input
-                            label="Email"
-                            {...register('email', { required: true })}
+
+                        <Controller
+                            name="username"
+                            control={control}
+                            rules={{ required: true }}
+                            render={({ field: { ref, onChange, value } }) =>
+                            {
+                                return (
+                                    <BasicInput
+                                        ref={ref}
+                                        label = "User Name"
+                                        value={value}
+                                        onChange={onChange}
+                                        helperText={FormService.getErrorMessage(
+                                            errors,
+                                            'username',
+                                            'User Name'
+                                        )}
+                                    />
+                                )
+                            }}
+
                         />
 
-                        <Input
-                            label="Password"
-                            {...register('password', { required: true })}
-                        />
+                        <Controller
+                            name="password"
+                            control={control}
+                            rules={{ required: true }}
+                            render={({ field: { ref, onChange, value } }) =>
+                            {
+                                return (
+                                    <BasicInput
+                                        ref={ref}
+                                        type="password"
+                                        label = "Password"
+                                        value={value}
+                                        onChange={onChange}
+                                        helperText={FormService.getErrorMessage(
+                                            errors,
+                                            'password',
+                                            'Password'
+                                        )}
+                                    />
+                                )
+                            }}
 
-                        {errors.email && <span>This field is required</span>}
+                        />
 
                         <Button variant="outlined" type="submit">
                             Sign In

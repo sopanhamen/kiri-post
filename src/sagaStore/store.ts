@@ -1,27 +1,27 @@
-import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
-import createSagaMiddleware from 'redux-saga';
-import rootSaga from './rootSaga';
-import persistReducer from 'redux-persist/es/persistReducer';
-import { persistConfig } from '@store/store.persist.config';
-import { rootReducer } from './root-reducer';
+import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
+import createSagaMiddleware from 'redux-saga'
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+import { rootReducer } from './root-reducer'
+import rootSaga from './rootSaga'
+
+// const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const sagaMiddleware = createSagaMiddleware()
 
 export const store = configureStore({
-    reducer: persistedReducer,
+    reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(sagaMiddleware),
-});
+})
+// export const persister = persistStore(store)
 
 sagaMiddleware.run(rootSaga)
 
-export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof store.getState>
 export type AppThunk<ReturnType = void> = ThunkAction<
     ReturnType,
     RootState,
     unknown,
     Action<string>
->;
+>
