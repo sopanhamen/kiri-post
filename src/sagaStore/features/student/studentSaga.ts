@@ -1,15 +1,19 @@
 import { PayloadAction } from '@reduxjs/toolkit'
 import { fetchStudents } from '@sagaStore/service/student.service'
-import {  Student } from '@shared/models/student.model'
-import { call, debounce, put, takeLatest } from 'redux-saga/effects'
 import { ListParams, ListResponse } from '@shared/interfaces/common'
+import { Student } from '@shared/models/student.model'
+import { call, debounce, put, takeLatest } from 'redux-saga/effects'
+
 import { studentActions } from './studentSlice'
 
 function* fetchStudentList(action: PayloadAction<ListParams>) {
     try {
-        const response: ListResponse<Student> = yield call(fetchStudents,action.payload)
+        const response: ListResponse<Student> = yield call(
+            fetchStudents,
+            action.payload,
+        )
         yield put(studentActions.fetchStudentListSuccess(response))
-    } catch (error) {
+    } catch (error: any) {
         console.log('Failed to fetch student list', error)
         yield put(studentActions.fetchStudentListFailed(error.message))
     }

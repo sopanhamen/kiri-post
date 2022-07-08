@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { FeatureKey } from '../FeatureKey';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { FeatureKey } from '../FeatureKey'
 
 export const selectedTodoSlice = createSlice({
     name: FeatureKey.SELECTED_TODO,
@@ -10,8 +10,8 @@ export const selectedTodoSlice = createSlice({
             { payload }: PayloadAction<{ id: string }>,
         ) => payload.id,
     },
-});
+})
 
 export const selectedTodoActions = {
     ...selectedTodoSlice.actions,
-};
+}
