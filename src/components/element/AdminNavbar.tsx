@@ -9,7 +9,7 @@ const AdminNavbar = (props: IProps) =>
     const { handleClickMenu } = props
 
     const style = {
-        navWrapper: `flex flex-nowrap w-full kiri-navbar`
+        navWrapper: `flex flex-nowrap w-full kiri-navbar position-fixed`
     }
 
     const icon = (
@@ -29,7 +29,7 @@ const AdminNavbar = (props: IProps) =>
 
     return (
         <div className={style.navWrapper} id="section-navbar">
-            <div className="flex flex-wrap justify-start w-full py-4 px-8 shadow-md backdrop-saturate-200 backdrop-blur-2xl bg-opacity-80 border border-white/80 bg-white text-white mx-auto ">
+            <div className="flex flex-wrap justify-start w-full py-4 px-8 backdrop-saturate-200 backdrop-blur-2xl bg-opacity-80 border border-white/80 bg-white text-white mx-auto ">
                 <div className="container flex items-center justify-between text-blue-grey-900">
                     <Typography
                         as="a"

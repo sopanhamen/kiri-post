@@ -4,8 +4,6 @@ import ClientLayout from '@layout/client/ClientLayout'
 
 const Home = (): JSX.Element => {
 
-
-
     return (
         <>
         </>

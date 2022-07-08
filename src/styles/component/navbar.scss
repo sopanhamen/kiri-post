@@ -1,6 +1,8 @@
-#section-navbar {
-    .kiri-navbar {
+#section-navbar ,
+.kiri-navbar {
         background-color: $white;
         height: 4.5rem;
-    }
+        // margin-bottom: 10rem;
+        position:fixed;
+    
 }

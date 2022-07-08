@@ -35,7 +35,7 @@
     }
 
     .bg-sidebar {
-        background-color: #494949;
+        background-color: $color-blue;
         width: 250px;
         height: auto;
         min-height: 100vh;
@@ -50,20 +50,20 @@
         .sidebar-items {
             direction: ltr;
             .sidebar-ul {
-                background-color: rgb(46, 46, 185);
+                background-color: $color-blue;
                 padding-left: 10px;
 
                 .sidebar-li {
                     position: relative;;
                     .list-contain {
                         background-color: inherit;
-                        padding: 20px 0px 17px 5px;
+                        padding: 20px 7px 17px 5px;
+                        // transition: 1s;
 
                         .submenu-list {
                             background-color: inherit;
                             padding: 10px 0px 10px 0;
                             margin: 0px 0px 1px 28px;
-
                         }
                         .submenu-list:hover {
                             background-color: rgb(72, 121, 72);
@@ -74,9 +74,10 @@
                 
                     .list-contain:hover {
                         background-color: $white;
-                        padding: 20px 0px 17px 5px;
+                        padding: 20px 7px 17px 5px;
                         border-top-left-radius: 1.50rem;
                         border-bottom-left-radius: 1.50rem;
+                        // transition: 1s;
                         position: relative;
                         .item-text-color {
                             color: $black;
@@ -92,7 +93,7 @@
                             height: 17px;
                             .box-top-inner {
                                 position: absolute;
-                                background-color: rgb(46, 46, 185);
+                                background-color: $color-blue;
                                 border-bottom-right-radius: 2.5rem;
                                 top: 0;
                                 right: 0px;
@@ -109,7 +110,7 @@
                             height: 17px;
                             .box-bottom-inner {
                                 position: absolute;
-                                background-color: rgb(46, 46, 185);
+                                background-color: $color-blue;
                                 border-top-right-radius: 2.5rem;
                                 top: 0;
                                 right: 0px;

@@ -1,6 +1,6 @@
+import { Dispatch } from 'redux'
 import { IActionReturnType } from 'src/shared/interfaces/common'
 import { UserProfile } from 'src/shared/models/user.model'
-import { Dispatch } from 'redux'
 
 import * as profileService from '../services/profile.service'
 
@@ -13,6 +13,8 @@ import {
     setProfileInitialState,
     updateUserProfileByIdSuccess,
 } from './profile.action-types'
+
+
 
 type Return = IActionReturnType<UserProfile | undefined>
 type FunctionReturn = (dispatch: Dispatch) => Promise<Return>
