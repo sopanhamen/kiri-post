@@ -14,6 +14,31 @@ module.exports = withSass({
 });
 
 module.exports = {
+    env: {
+		ApiKeyFirebase: process.env.API_KEY_FIREBASE,
+		AuthDomainFirebase: process.env.AUTH_DOMAIN_FIREBASE,
+		ProjectIdFirebase: process.env.PROJECT_ID_FIREBASE,
+		StorageBucket: process.env.STORAGE_BUCKET,
+		MessageSenderId: process.env.MESSAGING_SENDER_ID,
+		AppID: process.env.APP_ID,
+		ClientID: process.env.CLIENT_ID,
+
+		EnglishCode: process.env.ENGLISH_CODE,
+		KhmerCode: process.env.KHMER_CODE,
+
+		ABAPayWayScrip: process.env.ABA_PAY_WAY_SCRIPT,
+		ABAPayWayStyle: process.env.ABA_PAY_WAY_STYLE,
+		ABAPayWayPlugin: process.env.ABA_PAYWAY_PLUGIN,
+
+		BaseURL: process.env.BASE_URL,
+		FacebookID: process.env.FACEBOOK_APP,
+
+		GaTrackingID: process.env.GA_TRACKING_ID,
+		ClientBaseUrl: process.env.NEXT_PUBLIC_CLIENT_BASE_URL,
+
+		SocketBaseUrl: process.env.SOCKET_URL,
+		GoogleApiKey: process.env.GOOGLE_API_KEY,
+	},
     pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
     plugins: [
         'postcss-flexbugs-fixes',

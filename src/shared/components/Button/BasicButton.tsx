@@ -1,8 +1,10 @@
 import React from 'react'
 import { Button } from '@material-tailwind/react'
+import clsx from 'clsx'
 
 type Variant = 'filled' | 'outlined' | 'gradient' | 'text'
 type Size = 'sm' | 'md' | 'lg'
+type TypeButton = 'submit' | 'reset' | 'button'
 type Color =
     | 'blue-grey'
     | 'grey'
@@ -27,10 +29,12 @@ type Color =
 interface IButtonProps {
     onClick?: () => void
     label: string
+    type?: TypeButton
     color?: Color
     variant?: Variant
     disable?: boolean
     size?: Size
+    className?: string
 }
 
 const BasicButton = (props: IButtonProps) => {
@@ -41,16 +45,19 @@ const BasicButton = (props: IButtonProps) => {
         variant = 'outlined',
         disable = false,
         size = 'sm',
+        type = 'submit',
+        className,
     } = props
 
     const styles = {
-        wrapper: `rounded-full `,
+        wrapper: clsx(`rounded-full`, className),
         container: ``,
     }
     return (
         <>
             <Button
                 variant={variant}
+                type={type}
                 color={color}
                 size={size}
                 disabled={disable}

@@ -16,6 +16,8 @@ interface IInputProps {
     disable?: boolean
     pattern?: string
     helperText?: string
+    className?: string
+    name?: string
 }
 
 const BasicInput = React.forwardRef<Ref, IInputProps>((props, ref) => {
@@ -24,11 +26,13 @@ const BasicInput = React.forwardRef<Ref, IInputProps>((props, ref) => {
         size = 'md',
         color = 'indigo',
         disable = false,
+        name,
         pattern,
         label,
         helperText,
         onChange,
         value,
+        className,
     } = props
 
     const style = {
@@ -42,11 +46,13 @@ const BasicInput = React.forwardRef<Ref, IInputProps>((props, ref) => {
                 ref={ref}
                 type={type}
                 label={label}
+                name={name}
                 size={size}
                 color={color}
                 pattern={pattern}
                 onChange={onChange}
                 value={value}
+                className={className}
                 className={style.inputContain}
                 disabled={disable}
             />

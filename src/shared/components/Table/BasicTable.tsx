@@ -1,6 +1,5 @@
 import * as _ from 'lodash'
-    import get from 'lodash/get'
-
+import get from 'lodash/get'
 
 interface ITableProps {
     isLoading: boolean
@@ -33,7 +32,7 @@ const TableCell = (props: ICellProps) => {
         </td>
     )
 }
-export const BasicTable = (props: ITableProps ): JSX.Element => {
+export const BasicTable = (props: ITableProps): JSX.Element => {
     const {
         isLoading = false,
         isNo = true,

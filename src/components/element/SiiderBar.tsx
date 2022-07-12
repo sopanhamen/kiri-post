@@ -1,22 +1,27 @@
-import { useState } from "react"
-import { MdKeyboardArrowRight, MdOutlineExpandMore } from "react-icons/md";
-import { INavbar } from "@layout/admin/data";
-import clsx from "clsx"
+import { useState } from 'react'
+import { MdKeyboardArrowRight, MdOutlineExpandMore } from 'react-icons/md'
+import { INavbar } from '@layout/admin/data'
+import clsx from 'clsx'
 import * as _ from 'lodash'
-import Image from "next/image"
-import Link from "next/link"
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 interface IProp {
-    isShow?: boolean, 
-    navigation?: INavbar[]
+    isShow?: boolean
+    navigation?: INavbar[],
 }
 
-const Sidebar = (props: IProp) =>
-{
+const Sidebar = (props: IProp) => {
     const { isShow, navigation } = props
     const [sidebarState, setSidebarState] = useState(navigation)
+    const router = useRouter()
+
     const style = {
-        root: clsx('section-sidebar h-screen', isShow && isShow && 'customMenu'),
+        root: clsx(
+            'section-sidebar h-screen',
+            isShow && isShow && 'customMenu',
+        ),
         sideHear: `sidebar-header center`,
         logoWrapper: `bg-admin-logo cursor-pointer`,
         logo: `w-full h-full`,
@@ -31,19 +36,13 @@ const Sidebar = (props: IProp) =>
 
         subMenuWrapper: `submenu-list`,
         boxTop: `custom-box-top`,
-        boxBottom: `custom-box-bottom`
+        boxBottom: `custom-box-bottom`,
     }
-
-    const openSubMenu = (index: number, isShow: boolean) =>
-    {
-        const mapNav = _.map(navigation, (el, i) =>
-        {
-            if (i === index)
-            {
+    const openSubMenu = (index: number, isShow: boolean) => {
+        const mapNav = _.map(navigation, (el, i) => {
+            if (i === index) {
                 return { ...el, showSubmenu: !isShow }
-            }
-            else
-            {
+            } else {
                 return { ...el, showSubmenu: false }
             }
         })
@@ -65,7 +64,11 @@ const Sidebar = (props: IProp) =>
                     </a>
                 </Link>
                 <div
-                    className={clsx('closeIcone cursor-pointer d-md-none p-2', isShow ? 'd-block' : 'd-none')}>
+                    className={clsx(
+                        'closeIcone cursor-pointer d-md-none p-2',
+                        isShow ? 'd-block' : 'd-none',
+                    )}
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="18"
@@ -81,102 +84,128 @@ const Sidebar = (props: IProp) =>
             <div className={style.sidebarContentWrapper}>
                 <div className={style.bgSmall}></div>
                 <div className={style.sidebarContent}>
-                    <ul className={style.menu} >
-                        {
-                            _.map(sidebarState, (menu, index) =>
-                            {
-                                return (
-                                    menu?.items ? (
-                                        <li key={menu.title} className={style.menuItem} >
-                                            <div className={style.menuItems}>
-                                                <div className="flex justify-between" onClick={() => openSubMenu(index, menu?.showSubmenu)}>
-                                                    <div className="flex">
-                                                        <Image
-                                                            width={25}
-                                                            height={25}
-                                                            src={menu?.icon}
-                                                            alt={menu?.title}
-                                                            className={style.iconMenu}
+                    <ul className={style.menu}>
+                        { _.map(sidebarState, (menu, index) => {
+                            return menu?.items ? (
+                                <li key={menu.title} className={style.menuItem}>
+                                    <div className={clsx(style.menuItems, router.asPath === menu.href ? 'active' : '')}>
+                                        <div
+                                            className="flex justify-between"
+                                            onClick={() =>
+                                                openSubMenu(
+                                                    index,
+                                                    menu?.showSubmenu,
+                                                )
+                                            }
+                                        >
+                                            <div className="flex">
+                                                <Image
+                                                    width={23}
+                                                    height={23}
+                                                    src={menu?.icon}
+                                                    alt={menu?.title}
+                                                    className={style.iconMenu}
+                                                />
+                                                <span
+                                                    className={style.textMenu}
+                                                >
+                                                    {menu?.title}
+                                                </span>
+                                            </div>
 
-                                                        />
-                                                        <span className={style.textMenu}>{menu?.title}</span>
-                                                    </div>
+                                            <div className="">
+                                                {menu.showSubmenu ? (
+                                                    <MdOutlineExpandMore
+                                                        size={25}
+                                                        className="float-right"
+                                                        color="black"
+                                                    />
+                                                ) : (
+                                                    <MdKeyboardArrowRight
+                                                        size={25}
+                                                        className="float-right"
+                                                        color="black"
+                                                    />
+                                                )}
+                                            </div>
+                                        </div>
 
+                                        {menu.showSubmenu
+                                            ? _.map(menu?.items, (subItem) => (
+                                                  <div
+                                                      key={subItem?.href}
+                                                      className={style.subMenuWrapper}
+                                                  >
+                                                      <Link
+                                                          href={subItem?.href}
+                                                      >
+                                                          <a>
+                                                              <span
+                                                                  className={
+                                                                      style.textMenu
+                                                                  }
+                                                              >
+                                                                  {
+                                                                      subItem.title
+                                                                  }
+                                                              </span>
+                                                          </a>
+                                                      </Link>
+                                                  </div>
+                                              ))
+                                            : null}
 
-                                                    <div className="">
-                                                        {
-                                                            menu.showSubmenu ? (
-                                                                <MdOutlineExpandMore size={25} className="float-right" color="black"/>
-                                                            ) : (
-                                                                <MdKeyboardArrowRight size={25} className="float-right" color="black" />
-                                                            )
+                                        <div className={style.boxTop}>
+                                            <div className="box-top-inner" />
+                                        </div>
+
+                                        <div className={style.boxBottom}>
+                                            <div className="box-bottom-inner" />
+                                        </div>
+                                    </div>
+                                </li>
+                            ) : (
+                                <li className={style.menuItem} key={index} >
+                                    <div className={clsx(style.menuItems, router.asPath === menu?.href ? 'active' : "")}>
+                                        <Link href={menu?.href}>
+                                            <a>
+                                                <div className="flex">
+                                                    <Image
+                                                        width={25}
+                                                        height={25}
+                                                        src={menu?.icon}
+                                                        alt={menu?.title}
+                                                        className={
+                                                            style.iconMenu
                                                         }
-                                                        
-                                                    </div>
-
+                                                    />
+                                                    <span
+                                                        className={
+                                                            style.textMenu
+                                                        }
+                                                    >
+                                                        {menu?.title}
+                                                    </span>
                                                 </div>
+                                            </a>
+                                        </Link>
 
-                                                {
-                                                    menu.showSubmenu ? (
-                                                        _.map(menu?.items, (subItem) => (
-                                                            <div key={subItem?.href} className={style.subMenuWrapper}>
-                                                                <Link href={subItem?.href}>
-                                                                    <a>
-                                                                        <span className={style.textMenu}>{subItem.title}</span>
-                                                                    </a>
-                                                                </Link>
-                                                            </div>
-                                                        ))
-                                                    ) : null
-                                                }
-
-                                                <div className={style.boxTop}>
-                                                    <div className="box-top-inner" />
-                                                </div>
-
-                                                <div className={style.boxBottom}>
-                                                    <div className="box-bottom-inner" />
-                                                </div>
-                                            </div>
-                                        </li>
-                                    ) : (
-                                        <li className={style.menuItem} key={index}>
-                                            <div className={style.menuItems}>
-                                                <Link href={menu?.href}>
-                                                    <a>
-                                                        <div className="flex">
-                                                            <Image
-                                                                width={25}
-                                                                height={25}
-                                                                src={menu?.icon}
-                                                                alt={menu?.title}
-                                                                className={style.iconMenu}
-
-                                                            />
-                                                            <span className={style.textMenu}>{menu?.title}</span>
-                                                        </div>
-                                                    </a>
-                                                </Link>
-
-                                                <div className={style.boxTop}>
-                                                    <div className="box-top-inner" />
-                                                </div>
-                                                <div className={style.boxBottom}>
-                                                    <div className="box-bottom-inner" />
-                                                </div>
-                                            </div>
-
-                                        </li>
-                                    )
-                                )
-                            })
-                        }
+                                        <div className={style.boxTop}>
+                                            <div className="box-top-inner" />
+                                        </div>
+                                        <div className={style.boxBottom}>
+                                            <div className="box-bottom-inner" />
+                                        </div>
+                                    </div>
+                                </li>
+                            )
+                        })}
                     </ul>
                 </div>
             </div>
-
         </div>
     )
 }
 
-export default Sidebar
+export default Sidebar;
+

@@ -9,3 +9,5 @@ export const addedTodo = createAction('[Added TODO]')
 export const updateTodo = createAction('[Update TODO')
 
 export const deleteTodo = createAction('[Delete TODO]')
+
+export const increaseByAmount = createAction('[To do] increase by amount')

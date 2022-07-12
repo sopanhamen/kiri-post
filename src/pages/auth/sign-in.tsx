@@ -15,29 +15,25 @@ const styles = {
     textHeader: `text-center align-middle inline-block`,
     cardBody: `text-center`,
 }
-const SignIn = () =>
-{
+const SignIn = () => {
     const {
         control,
         handleSubmit,
         formState: { errors },
     } = useForm()
 
-    const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch()
 
     // const isLoggin = useAppSelector((state) => state.auth.logging);
 
-    const onSubmit = (formData: ILogin) =>
-    {
-
+    const onSubmit = (formData: ILogin) => {
         dispatch(
             authActions.login({
                 username: formData.username,
                 password: formData.password,
-            })
-        );
+            }),
+        )
     }
-
 
     return (
         <div className={styles.wrapper}>
@@ -47,52 +43,47 @@ const SignIn = () =>
                 </CardHeader>
                 <CardBody className={styles.cardBody}>
                     <form onSubmit={handleSubmit(onSubmit)}>
-
                         <Controller
                             name="username"
                             control={control}
                             rules={{ required: true }}
-                            render={({ field: { ref, onChange, value } }) =>
-                            {
+                            render={({ field: { ref, onChange, value } }) => {
                                 return (
                                     <BasicInput
                                         ref={ref}
-                                        label = "User Name"
+                                        label="User Name"
                                         value={value}
                                         onChange={onChange}
                                         helperText={FormService.getErrorMessage(
                                             errors,
                                             'username',
-                                            'User Name'
+                                            'User Name',
                                         )}
                                     />
                                 )
                             }}
-
                         />
 
                         <Controller
                             name="password"
                             control={control}
                             rules={{ required: true }}
-                            render={({ field: { ref, onChange, value } }) =>
-                            {
+                            render={({ field: { ref, onChange, value } }) => {
                                 return (
                                     <BasicInput
                                         ref={ref}
                                         type="password"
-                                        label = "Password"
+                                        label="Password"
                                         value={value}
                                         onChange={onChange}
                                         helperText={FormService.getErrorMessage(
                                             errors,
                                             'password',
-                                            'Password'
+                                            'Password',
                                         )}
                                     />
                                 )
                             }}
-
                         />
 
                         <Button variant="outlined" type="submit">

@@ -1,29 +1,17 @@
 import { combineReducers } from '@reduxjs/toolkit'
 
-import visibilityFilter from './feature/featureSlice'
-// import { AuthReducer, AuthState } from './auth/auth.reducers'
+import { AuthReducer, AuthState } from './admin/auth/auth.reducer'
 import { ProfileState, UserProfileReducer } from './profile/profile.reducers'
-import { Todo } from './todo/mockData'
-import { counterSlice } from './counter'
-import { jsonTodosSlice } from './jsonTodos'
-import { todosSlice } from './sample-todo'
-import { selectedTodoSlice } from './selected-todo'
-
+import { CounterReducer, TodoState } from './todo/todo.reducer'
 
 export interface StoreState {
-    userProfile: ProfileState,
-    todos: Todo,
-    visibilityFilter: any
-    // auth: AuthState
-
+    userProfile: ProfileState
+    auth: AuthState
+    counter: TodoState
 }
 
 export const rootReducer = combineReducers({
+    auth: AuthReducer,
     userProfile: UserProfileReducer,
-    // todos: todos,
-    visibilityFilter: visibilityFilter,
-    todos: todosSlice.reducer,
-    selectedTodo: selectedTodoSlice.reducer,
-    counter: counterSlice.reducer,
-    jsonTodos: jsonTodosSlice.reducer,
+    counter: CounterReducer,
 })

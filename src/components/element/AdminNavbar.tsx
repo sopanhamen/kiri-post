@@ -1,15 +1,13 @@
-import { Button, Typography } from "@material-tailwind/react"
+import { Button, Typography } from '@material-tailwind/react'
 
-interface IProps
-{
-    handleClickMenu?: () => void,
+interface IProps {
+    handleClickMenu?: () => void
 }
-const AdminNavbar = (props: IProps) =>
-{
+const AdminNavbar = (props: IProps) => {
     const { handleClickMenu } = props
 
     const style = {
-        navWrapper: `flex flex-nowrap w-full kiri-navbar position-fixed`
+        navWrapper: `flex flex-nowrap w-full kiri-navbar position-fixed`,
     }
 
     const icon = (
@@ -25,7 +23,7 @@ const AdminNavbar = (props: IProps) =>
                 clipRule="evenodd"
             />
         </svg>
-    );
+    )
 
     return (
         <div className={style.navWrapper} id="section-navbar">
@@ -40,17 +38,41 @@ const AdminNavbar = (props: IProps) =>
                         Material Tailwind
                     </Typography>
                     <ul className="flex items-center gap-6">
-                        <Typography as="li" variant="small" className="p-1 font-normal">
-                            <a className="flex items-center">Pages&nbsp;{icon}</a>
+                        <Typography
+                            as="li"
+                            variant="small"
+                            className="p-1 font-normal"
+                        >
+                            <a className="flex items-center">
+                                Pages&nbsp;{icon}
+                            </a>
                         </Typography>
-                        <Typography as="li" variant="small" className="p-1 font-normal">
-                            <a className="flex items-center">Account&nbsp;{icon}</a>
+                        <Typography
+                            as="li"
+                            variant="small"
+                            className="p-1 font-normal"
+                        >
+                            <a className="flex items-center">
+                                Account&nbsp;{icon}
+                            </a>
                         </Typography>
-                        <Typography as="li" variant="small" className="p-1 font-normal">
-                            <a className="flex items-center">Blocks&nbsp;{icon}</a>
+                        <Typography
+                            as="li"
+                            variant="small"
+                            className="p-1 font-normal"
+                        >
+                            <a className="flex items-center">
+                                Blocks&nbsp;{icon}
+                            </a>
                         </Typography>
-                        <Typography as="li" variant="small" className="p-1 font-normal">
-                            <a className="flex items-center">Docs&nbsp;{icon}</a>
+                        <Typography
+                            as="li"
+                            variant="small"
+                            className="p-1 font-normal"
+                        >
+                            <a className="flex items-center">
+                                Docs&nbsp;{icon}
+                            </a>
                         </Typography>
                     </ul>
                     <Button variant="gradient" size="sm">
