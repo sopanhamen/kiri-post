@@ -21,7 +21,6 @@ const Todo = (props: ITodoProps) => {
         spaceButton: `my-3`,
     }
 
-
     return (
         <>
             <form>
@@ -47,13 +46,9 @@ const Todo = (props: ITodoProps) => {
                 />
 
                 <div className={style.spaceButton}>
-                    <BasicButton
-                        label="Button"
-                        
-                    />
+                    <BasicButton label="Button" />
                 </div>
             </form>
         </>
     )
 }
-

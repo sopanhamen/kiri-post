@@ -1,11 +1,12 @@
 import { BaseModel } from './base.models'
 
+type Gender = 'MALE' | 'FEMALE'
 export interface IUser {
     firstName?: string
     lastName?: string
 }
-export interface ILogin {
-    username: string,
+export interface ILoginRequest {
+    username: string
     password: string
 }
 
@@ -26,4 +27,12 @@ export class AuthProfile extends BaseModel {
 
 export interface IAuthorize {
     token?: string
+}
+export interface IUserRequest {
+    firstName: string
+    lastName: string
+    gender: Gender
+    phone?: string
+    email?: string
+    profile?: string
 }

@@ -1,9 +1,9 @@
 const EAdminPermissions = {
-    LOGIN: 'LOGIN:ADMIN'
+    LOGIN: 'LOGIN:ADMIN',
 }
 
 const EClientPermissions = {
-    LOGIN: 'LOGIN:CLIENT'
+    LOGIN: 'LOGIN:CLIENT',
 }
 
 const EAuth = {
@@ -11,4 +11,4 @@ const EAuth = {
     EClientPermissions,
 }
 
-export default EAuth;
+export default EAuth

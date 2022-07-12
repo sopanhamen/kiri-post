@@ -1,13 +1,8 @@
 import React from 'react'
 import ClientLayout from '@layout/client/ClientLayout'
 
-
 const Home = (): JSX.Element => {
-
-    return (
-        <>
-        </>
-    ) 
+    return <></>
 }
 
 Home.layout = ClientLayout

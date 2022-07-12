@@ -1,14 +1,14 @@
 import { Fragment } from 'react'
 import { Provider } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
-import { store } from '@sagaStore/store'
+import Configuration from '@shared/config/configuration'
 import { Page } from '@shared/interfaces/Page'
+import { persister, store } from '@store/index'
 import type { AppProps } from 'next/app'
 import { Router } from 'next/router'
 import NProgress from 'nprogress'
+import { PersistGate } from 'redux-persist/integration/react'
 
-// import { PersistGate } from 'redux-persist/integration/react'
-// import { persister, store } from '@store/index'
 import '../styles/globals.scss'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -26,14 +26,17 @@ function MyApp({ Component, pageProps }: IProps): JSX.Element {
     Router.events.on('routeChangeError', () => NProgress.done())
 
     return (
-        <Provider store={store}>
-            {/* <PersistGate persistor={persister} loading={null}> */}
-                <ToastContainer />
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
-            {/* </PersistGate> */}
-        </Provider>
+        <>
+            <Provider store={store}>
+                <PersistGate persistor={persister} loading={null}>
+                    <Configuration />
+                    <ToastContainer />
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
+                </PersistGate>
+            </Provider>
+        </>
     )
 }
 

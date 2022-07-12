@@ -14,8 +14,6 @@ import {
     updateUserProfileByIdSuccess,
 } from './profile.action-types'
 
-
-
 type Return = IActionReturnType<UserProfile | undefined>
 type FunctionReturn = (dispatch: Dispatch) => Promise<Return>
 

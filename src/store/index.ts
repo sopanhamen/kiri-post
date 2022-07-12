@@ -1,26 +1,47 @@
 import {
     Action,
     configureStore,
-    getDefaultMiddleware,
     Store,
     ThunkAction,
     ThunkDispatch,
 } from '@reduxjs/toolkit'
-import logger from 'redux-logger'
+import {
+    FLUSH,
+    PAUSE,
+    PERSIST,
+    persistReducer,
+    persistStore,
+    PURGE,
+    REGISTER,
+    REHYDRATE,
+} from 'redux-persist'
 
-// import persistStore from 'redux-persist/lib/persistStore'
 import { rootReducer } from './root-reducer'
+import { persistConfig } from './store.persist.config'
 
-// const persistedReducer = persistReducer(persistConfig, rootReducer)
+// persis config 
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export type RootState = ReturnType<typeof rootReducer>
 
 export const store = configureStore({
-    reducer: rootReducer,
-    middleware: [...getDefaultMiddleware(), logger],
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [
+                    FLUSH,
+                    REHYDRATE,
+                    PAUSE,
+                    PERSIST,
+                    PURGE,
+                    REGISTER,
+                ],
+            },
+        }),
     devTools: process.env.NODE_ENV === 'development',
 })
-// export const persister = persistStore(store)
+export const persister = persistStore(store)
 
 export type AppDispatch = typeof store.dispatch
 export type AppThunk = ThunkAction<void, RootState, null, Action<string>>
