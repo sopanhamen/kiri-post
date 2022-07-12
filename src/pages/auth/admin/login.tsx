@@ -1,12 +1,14 @@
 import { Controller, useForm } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
+import { connect } from 'react-redux'
 import BlankLayout from '@layout/auth/BlankLayout'
 import BasicButton from '@shared/components/Button/BasicButton'
 import BasicInput from '@shared/components/Input/BasicInput'
 import Loading from '@shared/components/Loading/Loading'
 import EAuth from '@shared/enum/auth.enum'
+import { ILoginRequest } from '@shared/models'
 import { FormService } from '@shared/services/form.service'
 import AuthAction from '@store/admin/auth/auth.action'
+import { AppDispatch, RootState } from '@store/index'
 import { useRouter } from 'next/router'
 
 const style = {
@@ -16,30 +18,23 @@ const style = {
     textHeader: `antialiased text-3xl mx-auto leading-5 text-amber-600 font-bold`,
     button: `text-center align-middle mx-auto `,
 }
-const Login = () => {
+
+const Login = (props) => {
+    
+    const { isLoading, setRequesting, getCountryCode, login } = props
     const {
         control,
         handleSubmit,
         formState: { errors },
     } = useForm()
 
-    const dispatch = useDispatch()
-
-    const isLoading = useSelector((state) => state.auth?.isLoading)
-    console.log('isRequesting', isLoading)
-    // const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
 
-    // const handleLogin = (formData) =>
-    // {
-    //     console.log("formData", formData)
-    // }
     const onSubmitLogIn = async (formData) => {
-        // setIsLoading(true)
-        dispatch(AuthAction.setRequesting(true))
+        setRequesting(true)
         const isEmail = formData?.username.includes('@')
         if (!isEmail) {
-            const res = await dispatch(AuthAction.getCountryCode())
+            const res = await getCountryCode()
 
             const phoneNumber = formData?.username || ''
             let realNumber = ''
@@ -67,13 +62,11 @@ const Login = () => {
         }
     }
 
-    const handleLogin = async (payload) => {
-        const res = await dispatch(AuthAction.login(payload))
-        console.log('res', res)
-        const { permissions } = res?.user
-        dispatch(AuthAction.setRequesting(false))
-        // setIsLoading(false)
+    const handleLogin = async (payload: ILoginRequest) => {
 
+        const res = await login(payload)
+        const { permissions } = res.user
+        setRequesting(true)
         checkingRedirect(permissions)
     }
     const checkingRedirect = (permissions: string[]) => {
@@ -158,4 +151,23 @@ const Login = () => {
 
 Login.layout = BlankLayout
 
-export default Login
+const mapStateToProps = (state: RootState) => {
+    const { user, isLoading } = state.auth;
+    return {  user, isLoading };
+};
+
+const mapDispatchToProps = (dispatch: AppDispatch) => {
+    const {
+        login,
+        getCountryCode,
+        setRequesting
+    } = AuthAction;
+    return {
+        setRequesting: (payload: boolean ) =>  dispatch(setRequesting(payload)),
+        login: (payload: ILoginRequest) => dispatch(login(payload)),
+        getCountryCode: () => dispatch(getCountryCode())
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+

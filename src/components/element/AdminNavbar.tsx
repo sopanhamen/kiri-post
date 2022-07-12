@@ -1,11 +1,6 @@
 import { Button, Typography } from '@material-tailwind/react'
 
-interface IProps {
-    handleClickMenu?: () => void
-}
-const AdminNavbar = (props: IProps) => {
-    const { handleClickMenu } = props
-
+const AdminNavbar = () => {
     const style = {
         navWrapper: `flex flex-nowrap w-full kiri-navbar position-fixed`,
     }
